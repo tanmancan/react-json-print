@@ -1,44 +1,95 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React JSON Print
 
-## Available Scripts
+Pretty prints JSON object in a collapsible tree view.
 
-In the project directory, you can run:
+Demo: https://tanmancan.github.io/examples/react-json-print/
 
-### `yarn start`
+![](public/example.png)
+*example JSON from: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON*
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Install
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```bash
+npm install react-json-print
+```
 
-### `yarn test`
+## Usage
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This package provides a react component to be used in your existing app. The component is compiled, targeting `es2018`, but you may also use the Typescript version.
 
-### `yarn build`
+```jsx
+import ReactJsonPrint from 'react-json-print'
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const App = () => <ReactJsonPrint dataObject={{}} />
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Use the Typescript version
+```jsx
+import ReactJsonPrint from 'react-json-print/src/react-json-print';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const App = () => <ReactJsonPrint dataObject={{}} />
+```
 
-### `yarn eject`
+## Props
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### `dataObject`
+#### type: (`string`|`number`|`boolean`|`null`|`object`|`array`)
+#### default: `null`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The data to be printed. Can be primitives, objects, or arrays. All values must be valid JSON types and all object keys must be valid JSON type. (ie. `string` not `Symbol`);
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```jsx
+const myDataObject = {
+  one: 1,
+  two: 2,
+  array: [
+    true,
+    false,
+    'string',
+  ],
+};
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+const App = () => <ReactJsonPrint dataObject={myDataObject} />
+```
 
-## Learn More
+### `dataString`
+#### type: (`string`)
+#### default: (`undefined`)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The data to be printed, provided as a valid JSON string. The string will be parsed via `JSON.parse`. If both `dataString` and `dataObject` are provided, the `dataObject` value will be used.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```jsx
+const myDataString = '{"one":1, "two":2, "array":[true, false, "string"]}';
+
+const App = () => <ReactJsonPrint dataString={myDataString} />
+```
+
+### `expanded`
+#### type: (`boolean`)
+#### default: `false`
+
+Displays the entire tree in an expanded state. By default all nested nodes in the tree are collapsed.
+
+```jsx
+const myDataObject = {
+  ...
+};
+
+const App = () => <ReactJsonPrint expanded dataObject={myDataObject} />
+```
+
+### `depth`
+#### type: (`number`)
+#### default: `0`
+
+Limits how many levels deep to display child nodes. Value of `0` will print all child nodes. Useful for deeply nested data, when you want to limit the number of node displayed.
+
+```jsx
+const myDataObject = {
+  ...
+};
+
+const App = () => <ReactJsonPrint depth={2} dataObject={myDataObject} />
+```
+
+&copy; Tanveer Karim

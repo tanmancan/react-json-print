@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   mode: 'production',
   entry: {
-    main: './src/react-json-print/'
+    main: path.resolve(__dirname, '../src/react-json-print/'),
   },
   module: {
     rules: [
@@ -27,14 +27,14 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'react': path.resolve(__dirname, './node_modules/react'),
-      'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+      'react': path.resolve(__dirname, '../node_modules/react'),
+      'react-dom': path.resolve(__dirname, '../node_modules/react-dom'),
     },
     extensions: ['.tsx', '.ts', '.js', '.css'],
   },
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     libraryTarget: 'commonjs2'
   },
 };

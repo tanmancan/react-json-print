@@ -1,0 +1,8 @@
+config/
+build/
+node_modules/
+public/
+scripts/
+src/
+tsconfig.json
+yarn.lock
