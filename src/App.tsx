@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ReactJsonPrint from './react-json-print';
+import exampleJson from './example.json';
+
+const styleApp = {
+  fontFamily: 'sans-serif',
+};
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={styleApp}>
+      <h1>React JSON Print</h1>
+      <h2>Limits output to 1 nested nodes</h2>
+      <ReactJsonPrint dataObject={exampleJson} depth={1}></ReactJsonPrint>
+      <pre>{JSON.stringify(exampleJson, null, ' ')}</pre>
+      <h2>Prints all nodes as expanded</h2>
+      <ReactJsonPrint expanded dataString={JSON.stringify(exampleJson)}></ReactJsonPrint>
+      <pre>{JSON.stringify(exampleJson, null, ' ')}</pre>
+      <h2>Uses a JSON string value</h2>
+      <ReactJsonPrint dataObject={exampleJson}></ReactJsonPrint>
+      <pre>{JSON.stringify(exampleJson, null, ' ')}</pre>
     </div>
   );
 }
