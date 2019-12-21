@@ -1,6 +1,6 @@
 # React JSON Print
 
-Pretty prints JSON object in a collapsible tree view.
+Pretty prints JSON object in a collapsible tree view. A Vue.js verion is available [here](https://www.npmjs.com/package/vue-json-print)
 
 Demo: https://tanmancan.github.io/examples/react-json-print/
 
