@@ -1,7 +1,7 @@
 {
   "name": "react-json-print",
   "description": "React component that pretty prints JSON object in a collapsible tree view",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Tanveer Karim <contact@tkarimdesign.com>",
   "license": "MIT",
   "keywords": [
@@ -14,7 +14,8 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist/",
-    "src/react-json-print"
+    "src/react-json-print",
+    "public/example.png"
   ],
   "repository": {
     "type": "git",
