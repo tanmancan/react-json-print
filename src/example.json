@@ -5,6 +5,7 @@
   "secretBase": "Super tower",
   "active": true,
   "empty": {},
+  "zero": 0,
   "members": [
     {
       "name": "Molecule Man",

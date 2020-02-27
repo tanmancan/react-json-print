@@ -90,6 +90,7 @@ const TreeContext = createContext({
 const getData = (props: ReactJsonPrintProps): DataObject => {
   const { dataObject, dataString } = props;
   if (typeof dataObject === 'boolean') return dataObject;
+  if (typeof dataObject === 'number') return dataObject;
   if (dataObject) {
     return dataObject;
   }
